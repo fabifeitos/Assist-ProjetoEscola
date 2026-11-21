@@ -17,3 +17,15 @@ Saída: `siscf_reel.mp4`
 3. Reveal da marca **SISCF**
 4. Benefícios rápidos
 5. CTA: “Conheça o SISCF”
+
+## Sugestão de legenda (Instagram)
+
+```
+Sua escola ainda no papel? 👀
+
+O SISCF organiza equipe, rotinas e cadastros em um só lugar.
+
+Salve este Reel e chame no direct pra conhecer.
+
+#SISCF #gestaoescolar #escolas #tecnologiaeducacional
+```
