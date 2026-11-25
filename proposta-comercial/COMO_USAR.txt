@@ -1,0 +1,23 @@
+PROPOSTA COMERCIAL SISCF — Como usar
+====================================
+
+Arquivos:
+  - proposta-siscf.html  → modelo editável (abra no Chrome/Edge)
+  - Proposta_Comercial_SISCF.pdf → PDF pronto para enviar
+  - gerar-pdf.sh → regenera o PDF a partir do HTML
+
+Passo a passo para enviar a um cliente:
+  1. Abra proposta-siscf.html no Google Chrome.
+  2. Clique no nome "[Nome da Funerária]" e digite o cliente.
+  3. Confira a data (botão "Atualizar data" na barra superior).
+  4. Clique em "Salvar PDF / Imprimir" → Destino: Salvar como PDF.
+  5. Envie o PDF por WhatsApp ou e-mail.
+
+Contato comercial no rodapé:
+  WhatsApp (11) 97557-4555
+  mpf.adm@gmail.com
+  https://lp.siscf.app.br/
+
+Planos (conforme site):
+  START  → Adesão R$ 499 + R$ 149/mês
+  PRO    → Adesão R$ 499 + R$ 229/mês (recomendado)
