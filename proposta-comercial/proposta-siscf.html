@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c1a24" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="description" content="Proposta comercial SISCF — gestão completa para funerárias. Abra no celular, personalize e envie ao cliente." />
   <title>Proposta Comercial — SISCF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -61,9 +64,38 @@
       color: var(--white);
     }
 
-    .toolbar button.secondary {
+    .toolbar button.secondary,
+    .toolbar a.secondary {
       background: transparent;
       border: 1px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font: 600 13px/1 "DM Sans", sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .toolbar a.primary {
+      background: var(--accent);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font: 600 13px/1 "DM Sans", sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-bar {
+      display: none;
+    }
+
+    .client-panel {
+      display: none;
     }
 
     .doc {
@@ -572,22 +604,119 @@
     }
 
     @media screen and (max-width: 760px) {
-      .page { padding: 32px 22px 64px; min-height: auto; }
-      .cover-body { margin-top: 48px; }
-      .cover-body h1, h1 { font-size: 32px; }
+      body { padding-bottom: 88px; font-size: 15px; }
+      .toolbar { display: none; }
+      .client-panel {
+        display: block;
+        background: var(--ink);
+        color: var(--white);
+        padding: 14px 16px 12px;
+        position: sticky;
+        top: 0;
+        z-index: 40;
+      }
+      .client-panel label {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-bottom: 6px;
+      }
+      .client-panel input {
+        width: 100%;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.08);
+        color: var(--white);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font: 600 16px/1.2 "DM Sans", sans-serif;
+        margin-bottom: 10px;
+      }
+      .client-panel .hint {
+        font-size: 12px;
+        opacity: 0.75;
+        line-height: 1.4;
+      }
+      .mobile-bar {
+        display: flex;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 60;
+        gap: 8px;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(12, 26, 36, 0.96);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      .mobile-bar a,
+      .mobile-bar button {
+        flex: 1;
+        border: 0;
+        border-radius: 12px;
+        padding: 14px 8px;
+        font: 700 13px/1.1 "DM Sans", sans-serif;
+        text-align: center;
+        text-decoration: none;
+        color: var(--white);
+        cursor: pointer;
+      }
+      .mobile-bar .wa { background: #1f8f4e; }
+      .mobile-bar .pdf { background: var(--accent); }
+      .mobile-bar .share { background: transparent; border: 1px solid rgba(255,255,255,0.35); }
+      .doc { margin: 12px auto 24px; gap: 12px; width: 100%; padding: 0 10px; }
+      .page {
+        padding: 28px 18px 56px;
+        min-height: auto;
+        border-radius: 16px;
+      }
+      .page-footer {
+        position: static;
+        margin-top: 28px;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .cover { min-height: auto; border-radius: 16px; }
+      .cover-body { margin-top: 36px; }
+      .cover-body h1, h1 { font-size: 28px; }
+      h2 { font-size: 24px; }
+      .brand-mark img { width: 180px; }
+      .meta-box { width: 100%; min-width: 0; }
       .grid-2, .grid-3, .grid-4, .plans, .about-grid { grid-template-columns: 1fr; }
       .cover-top, .cover-bottom { flex-direction: column; align-items: flex-start; }
-      .page-footer { left: 22px; right: 22px; }
+      .cover-bottom { gap: 12px; padding-top: 36px; }
+      .cover-bottom > div:last-child { text-align: left !important; }
+      .price { font-size: 34px; }
+      .stat strong { font-size: 30px; }
     }
   </style>
 </head>
 <body>
   <div class="toolbar">
-    <p>Personalize o nome do cliente e a data (campos editáveis). Depois use <strong>Salvar PDF</strong> e envie pelo WhatsApp ou e-mail.</p>
+    <p>No celular: digite o cliente, abra o PDF ou compartilhe no WhatsApp. No computador: personalize e salve o PDF.</p>
     <div class="toolbar-actions">
       <button class="secondary" type="button" onclick="preencherHoje()">Atualizar data</button>
+      <a class="secondary" href="Proposta_Comercial_SISCF.pdf" download>Baixar PDF</a>
+      <button type="button" onclick="compartilharWhatsApp()">WhatsApp</button>
       <button type="button" onclick="window.print()">Salvar PDF / Imprimir</button>
     </div>
+  </div>
+
+  <div class="client-panel">
+    <label for="cliente-mobile">Nome do cliente (funerária)</label>
+    <input id="cliente-mobile" type="text" inputmode="text" autocomplete="organization" placeholder="Ex.: Funerária Santa Inês" />
+    <p class="hint">Role a proposta abaixo. Use os botões fixos para baixar o PDF ou enviar no WhatsApp.</p>
+  </div>
+
+  <div class="mobile-bar">
+    <a class="pdf" href="Proposta_Comercial_SISCF.pdf">Abrir PDF</a>
+    <button class="wa" type="button" onclick="compartilharWhatsApp()">WhatsApp</button>
+    <button class="share" type="button" onclick="compartilharNativo()">Compartilhar</button>
   </div>
 
   <main class="doc">
@@ -602,7 +731,7 @@
           <div class="label">Emitido por</div>
           <div class="value">SISCF / TRINEO</div>
           <div class="label">Cliente</div>
-          <div class="value editable" contenteditable="true" id="cliente">[Nome da Funerária]</div>
+          <div class="value editable" contenteditable="true" id="cliente" data-sync="cliente">[Nome da Funerária]</div>
           <div class="label">Validade da proposta</div>
           <div class="value">15 dias corridos</div>
           <div class="label">Data de emissão</div>
@@ -674,7 +803,7 @@
       </div>
 
       <p class="client-line">
-        Proposta preparada para: <strong class="editable" contenteditable="true">[Nome da Funerária]</strong>
+        Proposta preparada para: <strong class="editable" contenteditable="true" data-sync="cliente">[Nome da Funerária]</strong>
       </p>
 
       <div class="page-footer">
@@ -1026,7 +1155,7 @@
       </div>
 
       <p class="client-line" style="margin-top:28px">
-        Cliente: <strong class="editable" contenteditable="true">[Nome da Funerária]</strong>
+        Cliente: <strong class="editable" contenteditable="true" data-sync="cliente">[Nome da Funerária]</strong>
         &nbsp;·&nbsp; Plano de interesse:
         <strong class="editable" contenteditable="true">START / PRO</strong>
       </p>
@@ -1039,6 +1168,24 @@
   </main>
 
   <script>
+    function nomeCliente() {
+      const mobile = document.getElementById("cliente-mobile");
+      const capa = document.getElementById("cliente");
+      const valor = (mobile && mobile.value.trim()) || (capa && capa.textContent.trim()) || "";
+      return valor && valor !== "[Nome da Funerária]" ? valor : "cliente";
+    }
+
+    function aplicarNomeCliente(nome) {
+      const texto = nome.trim() || "[Nome da Funerária]";
+      document.querySelectorAll('[data-sync="cliente"]').forEach((el) => {
+        el.textContent = texto;
+      });
+      const mobile = document.getElementById("cliente-mobile");
+      if (mobile && mobile.value.trim() !== nome.trim()) {
+        mobile.value = nome === "[Nome da Funerária]" ? "" : nome;
+      }
+    }
+
     function preencherHoje() {
       const el = document.getElementById("data-emissao");
       if (!el) return;
@@ -1051,17 +1198,49 @@
       });
     }
 
-    // Sincroniza nome do cliente entre campos editáveis
-    document.querySelectorAll('.editable').forEach((node) => {
-      node.addEventListener("input", () => {
-        if (node.id === "cliente") {
-          document.querySelectorAll('.editable').forEach((other) => {
-            if (other !== node && other.textContent.includes("[Nome") || other.dataset.sync === "cliente") {
-              // noop for free edit
-            }
-          });
+    function mensagemProposta() {
+      const cliente = nomeCliente();
+      const link = window.location.href;
+      return (
+        "Olá! Segue a proposta comercial do SISCF" +
+        (cliente !== "cliente" ? " para *" + cliente + "*" : "") +
+        ".\n\n" +
+        "Planos:\n" +
+        "• START — Adesão R$ 499 + R$ 149/mês\n" +
+        "• PRO — Adesão R$ 499 + R$ 229/mês (WhatsApp + assinatura eletrônica)\n\n" +
+        "Abrir proposta: " + link + "\n" +
+        "PDF: " + new URL("Proposta_Comercial_SISCF.pdf", window.location.href).href
+      );
+    }
+
+    function compartilharWhatsApp() {
+      const url = "https://wa.me/?text=" + encodeURIComponent(mensagemProposta());
+      window.open(url, "_blank");
+    }
+
+    async function compartilharNativo() {
+      const data = {
+        title: "Proposta Comercial SISCF",
+        text: mensagemProposta(),
+        url: window.location.href
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(data);
+          return;
         }
-      });
+      } catch (err) {
+        if (err && err.name === "AbortError") return;
+      }
+      compartilharWhatsApp();
+    }
+
+    const inputMobile = document.getElementById("cliente-mobile");
+    if (inputMobile) {
+      inputMobile.addEventListener("input", () => aplicarNomeCliente(inputMobile.value));
+    }
+    document.querySelectorAll('[data-sync="cliente"]').forEach((node) => {
+      node.addEventListener("input", () => aplicarNomeCliente(node.textContent));
     });
 
     preencherHoje();
